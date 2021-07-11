@@ -3,21 +3,21 @@ import { MarketStateVm, MarketName } from '../../api-types';
 
 class MarketApi {
   #API_URL: string;
-  marketName: MarketName;
+  #marketName: MarketName;
 
   constructor(API_URL: string, marketName: MarketName) {
     this.#API_URL = API_URL;
-    this.marketName = marketName;
+    this.#marketName = marketName;
   }
 
   get = async () => {
-    const { data } = await axios.get<MarketStateVm>(`${this.#API_URL}/${this.marketName}`);
+    const { data } = await axios.get<MarketStateVm>(`${this.#API_URL}/${this.#marketName}`);
 
     return data;
   };
 
   getPoll = async () => {
-    const { data } = await axios.get<MarketStateVm>(`${this.#API_URL}/${this.marketName}/poll`);
+    const { data } = await axios.get<MarketStateVm>(`${this.#API_URL}/${this.#marketName}/poll`);
 
     return data;
   };
